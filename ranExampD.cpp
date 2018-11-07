@@ -97,15 +97,27 @@ int main()
    bool isWinner = false;
    int node = -1;
    int count = 0;
+   
+   
+   // A Vector containing all legal moves at any time 
+   set<int> listmoves = {4,7,5,3,1,6,2,0,8};
+   bool turn = 0;
+   
+   
 
    while( isWinner == false )
    {
         
        cin>>node;
-       count++;
+       auto isatpos = listmoves.find(node); 
+       if( isatpos != listmoves.end() )
+           listmoves.erase( isatpos );
+       //--count++;
        // Get a node 
        
-       cout<<endl<<node<<endl;
+       turn = turn ? false:true;
+       
+       cout<<endl<<"Selection :"<<node<<" "<<( turn ? "blue" : "red")<<endl;
        // A one node Path created and initialized
        mPath* curNodePath = new mPath(node);
        // Path map updated
